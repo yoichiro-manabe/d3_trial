@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>D3 page template</title>
+
+    <script type="text/javascript" src="../d3/d3.js"></script>
+    <link href="style/06.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!--<div class="bar"></div>-->
+<script type="text/javascript">
+
+    var h = 50;
+    var w = 500;
+
+    var dataset = [];
+    for(var i = 0; i < 25; i++){
+        dataset.push(Math.random() * 100);
+    }
+
+    var svg = d3.select("body").append("svg");
+    svg.attr("width", w);
+    svg.attr("height", h);
+
+    var circles = svg.selectAll("rect").data(dataset).enter()
+            .append("rect").attr("x", function(d, i){
+                return i * 21;
+            }).attr("y", function(d){
+                return (h-d);
+            })
+            .attr("width", 20).attr("height", function(d){
+                return d;
+            }).attr("fill", function(d){
+
+                console.log("rgb(0, 0," + Math.round(d) + " )");
+
+                return "rgb(0, 0," + Math.round(d) + " )";
+            });
+</script>
+</body>
+</html>

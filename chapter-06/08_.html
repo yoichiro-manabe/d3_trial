@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>D3 page template</title>
+
+    <script type="text/javascript" src="../d3/d3.js"></script>
+    <link href="style/06.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!--<div class="bar"></div>-->
+<script type="text/javascript">
+
+    var h = 50;
+    var w = 500;
+
+    var dataset = [5, 10, 15, 20, 25];
+
+    var svg = d3.select("body").append("svg");
+    svg.attr("width", w);
+    svg.attr("height", h);
+
+    var circles = svg.selectAll("circle").data(dataset).enter().append("circle");
+    circles.attr("cx", function(d, i){
+        return (i * 50) + 25;
+    }).attr("cy", h/2).attr("r", function(d){
+        return d;
+    });
+</script>
+</body>
+</html>
